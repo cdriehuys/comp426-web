@@ -1,5 +1,7 @@
 import React from 'react';
-import { Button, Col, ControlLabel, FormControl, FormGroup, Row } from 'react-bootstrap';
+import { Button, Col, Row } from 'react-bootstrap';
+
+import FormField from './FormField';
 
 
 class LoginForm extends React.Component {
@@ -25,24 +27,18 @@ class LoginForm extends React.Component {
       <Row>
         <Col sm={12} md={8} mdOffset={2} lg={6} lgOffset={3}>
           <form>
-            <FormGroup controlId="username">
-              <ControlLabel>Username</ControlLabel>
-              <FormControl
-                name="username"
-                onChange={this.handleChange}
-                type="text"
-                value={this.state.username}
-              />
-            </FormGroup>
-            <FormGroup controlId="password">
-              <ControlLabel>Password</ControlLabel>
-              <FormControl
-                name="password"
-                onChange={this.handleChange}
-                type="password"
-                value={this.state.password}
-              />
-            </FormGroup>
+            <FormField
+              label="Username"
+              name="username"
+              onChange={this.handleChange}
+              value={this.state.username}
+            />
+            <FormField
+              label="Password"
+              name="password"
+              onChange={this.handleChange}
+              value={this.state.password}
+            />
           </form>
 
           <Button bsStyle="primary">Log In</Button>
