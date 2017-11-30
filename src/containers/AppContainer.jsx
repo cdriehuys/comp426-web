@@ -1,17 +1,20 @@
 import React from 'react';
-import { Nav, NavItem, Navbar } from 'react-bootstrap';
+import { Grid, Nav, NavItem, Navbar } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
+import { Route } from 'react-router-dom';
+
+import { LoginForm } from '../components';
 
 
-const AppContainer = () => (
-  <Navbar inverse collapseOnSelect>
+const AppContainer = () => [
+  <Navbar key="navbar" inverse collapseOnSelect>
     <Navbar.Header>
       <Navbar.Brand>UltiManager</Navbar.Brand>
       <Navbar.Toggle />
     </Navbar.Header>
     <Navbar.Collapse>
       <Nav pullRight>
-        <LinkContainer to="#">
+        <LinkContainer to="/login/">
           <NavItem>Log In</NavItem>
         </LinkContainer>
         <LinkContainer to="#">
@@ -19,8 +22,11 @@ const AppContainer = () => (
         </LinkContainer>
       </Nav>
     </Navbar.Collapse>
-  </Navbar>
-);
+  </Navbar>,
+  <Grid key="content">
+    <Route exact path="/login/" component={LoginForm} />
+  </Grid>,
+];
 
 
 export default AppContainer;
