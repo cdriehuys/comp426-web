@@ -1,21 +1,15 @@
 import 'bootstrap/dist/css/bootstrap.css';
 import React from 'react';
-import { Nav, NavItem, Navbar } from 'react-bootstrap';
+import { BrowserRouter } from 'react-router-dom';
+
+import { AppContainer } from './containers';
 
 
 const App = () => (
-  <Navbar inverse collapseOnSelect>
-    <Navbar.Header>
-      <Navbar.Brand>UltiManager</Navbar.Brand>
-      <Navbar.Toggle />
-    </Navbar.Header>
-    <Navbar.Collapse>
-      <Nav pullRight>
-        <NavItem href="#">Log In</NavItem>
-        <NavItem href="#">Register</NavItem>
-      </Nav>
-    </Navbar.Collapse>
-  </Navbar>
+  <BrowserRouter>
+    <AppContainer />
+  </BrowserRouter>
 );
+
 
 export default App;
