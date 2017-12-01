@@ -3,7 +3,7 @@ import { Grid, Nav, NavItem, Navbar } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
 import { Link, Route } from 'react-router-dom';
 
-import { LoginPage } from '../pages';
+import { LoginPage, RegistrationPage } from '../pages';
 
 
 const AppContainer = () => [
@@ -19,7 +19,7 @@ const AppContainer = () => [
         <LinkContainer to="/login/">
           <NavItem>Log In</NavItem>
         </LinkContainer>
-        <LinkContainer to="#">
+        <LinkContainer to="/register/">
           <NavItem>Register</NavItem>
         </LinkContainer>
       </Nav>
@@ -27,6 +27,7 @@ const AppContainer = () => [
   </Navbar>,
   <Grid key="content">
     <Route path="/login/" component={LoginPage} />
+    <Route path="/register/" component={RegistrationPage} />
   </Grid>,
 ];
 

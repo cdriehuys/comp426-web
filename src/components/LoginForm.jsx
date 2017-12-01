@@ -20,7 +20,7 @@ const LoginForm = props => (
         type: 'password',
       },
     }}
-    successURL="/login/success/"
+    successURL="/"
   />
 );
 

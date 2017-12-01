@@ -13,6 +13,12 @@ class APIClient {
 
     return axios.post(url, { username, password }).then(response => response.data);
   }
+
+  static register = (username, password) => {
+    const url = `${APIClient.API_ROOT}/account/register/`;
+
+    return axios.post(url, { username, password }).then(response => response.data);
+  }
 }
 
 
