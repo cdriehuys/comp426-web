@@ -41,6 +41,11 @@ export const login = (username, password) => (dispatch) => {
 }
 
 
+export const logout = () => ({
+  type: actions.LOGOUT,
+});
+
+
 export const registerFail = (errors) => ({
   type: actions.REGISTER_FAIL,
   payload: {

@@ -1,4 +1,4 @@
-import { LOGIN_FAIL, LOGIN_RESET, LOGIN_START, LOGIN_SUCCESS } from '../actions';
+import { LOGIN_FAIL, LOGIN_RESET, LOGIN_START, LOGIN_SUCCESS, LOGOUT } from '../actions';
 
 
 const defaultState = {
@@ -39,6 +39,12 @@ export default (state = defaultState, action) => {
         loginComplete: true,
         loginErrors: {},
         loginPending: false,
+      }
+
+    case LOGOUT:
+      return {
+        ...state,
+        token: '',
       }
 
     default:
