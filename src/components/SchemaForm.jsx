@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import { Button, Col, Row } from 'react-bootstrap';
+import { Alert, Button, Col, Row } from 'react-bootstrap';
 import { Redirect } from 'react-router';
 
 import FormField from './FormField';
@@ -122,9 +122,9 @@ class SchemaForm extends React.Component {
     }
 
     return (
-      <div className="alert alert-danger">
+      <Alert bsStyle="danger">
         {content}
-      </div>
+      </Alert>
     );
   }
 }
