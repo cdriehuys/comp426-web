@@ -13,13 +13,7 @@ This document contains information on how to contribute to the app.
 
 ## Environment Setup
 
-We use [Yarn][yarn] for package management. Please make sure it is installed before continuing. The React app is managed with [Create React App](https://github.com/facebookincubator/create-react-app). You can install it with the following command:
-
-```shell
-$ yarn global add create-react-app
-```
-
-Now you're ready to clone the project and install its requirements:
+We use [Yarn][yarn] for package management. Please make sure it is installed before continuing. Now you're ready to clone the project and install its requirements:
 
 ```shell
 $ git clone https://github.com/cdriehuys/comp426-web
@@ -69,6 +63,5 @@ $ yarn build
 ```
 
 
-[create-react-app]: https://github.com/facebookincubator/create-react-app
 [pull-request]: https://github.com/cdriehuys/comp426-web/compare
 [yarn]: https://yarnpkg.com/en/docs/install
