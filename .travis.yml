@@ -1,0 +1,32 @@
+language: node_js
+node_js: node
+
+branches:
+  only:
+    - master
+
+cache:
+  pip: yes
+  yarn: yes
+
+env:
+  global:
+    - AWS_REGION=us-east-1
+    - BUILD_DIR=build
+    # AWS_ACCESS_KEY_ID
+    - secure: "eKLdkuGVSgUqkcHLDl2s+sM7S6NgmoJSaOj6AQDqqo9HueXZSIGlJLTFhzzua8BrpqzBn1mk+5O4wmocPy9SHL3bS5n3rT2uZfnsz/wVJV+K2CpoYbsEC+czl+LK/zogeeIPOXSaTHzyEKRk1bo0VrmJCzOD8Pfa4jZe8810vu6VD5PfGyuajOIo/diilSTmru9Fs1Mn6wRGvGTZxXVW4Ch7wZIu9buIwfqbqzh31/GEYXJ4QQL5ZOrcJfCQXEhzBRUcjr0zEFlwaXPrCqgDqFjLRj9kUXQqAl/g7qOu+RAyjBp5bX2xwxxnKB7/3eeO351mOPD8hWlAVWAT7vUL1XVFm/AHMHpNSZBHH9P/jQ6vwx7K08+XylieZe5knUEW/FBRQlJtWT0XqeiH6/c9RZd+MslHtiZShHFGWPiazY18JHjSkZYYcUEEfqyB7K+av5wiTuwksvuC68jpocb9HlCMWlrOFaChqGJ2POjGX4gLw5PMdoMZYkZ+9iNhsM3elfWcn9qPuwOrlHH5r1t5jOnBm7YJqDFSp/pzKsLcpBFsTbCJ5wn9Rqex5f1aAK1L59Dx6JbLz3XpT6mjlNqkMkDiwGs477V8FAuEl0Fo4v6rqIQSNQjfTzbib+XFuK+o/w/vvf3fbPEc+HaCBRT/qJfuhbNGEKR7TIoXFG26/44="
+    # AWS_SECRET_ACCESS_KEY
+    - secure: "tBRszBIk0JejsemdzkHEDm+6kY0jorJYm0ZCCKiK84s0IrPbcrG+OHBM7pNlF4tox188YRT2mGE0t5iMh38qfjF1iacKsl2NiIX/35RieQkoRrVJWEUFmc+ewvb2lT+o9YGK2My9Z8FL9Yh3zdhfNq/dE7XMa0tLr/lFEjplJTdfsG/osGQJHPg5rnxT9LY9E37bqemf3n3+tAbz8dhBDQrbQMajB0nvE5lgjwgPxmocRwgQW0OotEZLokYNe4DIue9AtDMDrYxfGSY77lsgZyVV0bKJN68VwEocNb49ulsX5izr1ljzsvb6GZ0QaOJp8ubvye2WFG8JD0ETQAOJsO5vyxXkveeEYmIsWeVvvT51tEK/VEBuAe9s9L3rnklymtOTFRKry7WByCnOGiDD51mdmovJesBz7qArCERW8mUJ4RJo1oUmH6XdNcwtLFXwsIlCaZyJNsC7gbWEqci0Z9huWdLhH7/A/m+CsMr6amAjZkKJ34B+npCRBhhvANbenMXiV90uV7HAHI0fTw5gBpFtpNNUktMEy8YlQzJRPqiz/59+SktZRvvxOtKOxKykOBlrTrjwUH77UQa9UoIoo18mex+ui2oCtGmvavtII6EDfgvrkY7bT2nWpVcF5Bid68lw9ePgitoG8ogdSiag/bteb5NW7TICVM5zlKolAm4="
+
+install:
+  - yarn
+  - pip install --user awscli
+
+script: yarn run build
+
+deploy:
+  provider: script
+  script: ~/.local/bin/aws s3 sync $BUILD_DIR s3://ultimanager.com --region=$AWS_REGION --delete
+  skip_cleanup: yes
+  on:
+    branch: msater
