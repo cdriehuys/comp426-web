@@ -2,6 +2,13 @@
 
 Front end for COMP 426 final project.
 
+The project is live at: https://ultimanager.com
+
+
+## Development
+
+A guide to contributing to the project can be found in [CONTRIBUTING.md](CONTRIBUTING.md).
+
 
 ## License
 
