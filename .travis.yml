@@ -29,4 +29,4 @@ deploy:
   script: ~/.local/bin/aws s3 sync $BUILD_DIR s3://ultimanager.com --region=$AWS_REGION --delete
   skip_cleanup: yes
   on:
-    branch: msater
+    branch: master
