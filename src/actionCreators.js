@@ -14,6 +14,11 @@ export const loginFail = (errors) => ({
 });
 
 
+export const loginReset = () => ({
+  type: actions.LOGIN_RESET,
+})
+
+
 export const loginStart = () => ({
   type: actions.LOGIN_START,
 });

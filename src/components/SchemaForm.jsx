@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import { Button, Col, Row } from 'react-bootstrap';
+import { Redirect } from 'react-router';
 
 import FormField from './FormField';
 
@@ -9,7 +10,9 @@ class SchemaForm extends React.Component {
 
   static defaultProps = {
     errors: {},
+    isComplete: false,
     isLoading: false,
+    onComplete: null,
     submitText: 'Submit',
   };
 
@@ -27,8 +30,10 @@ class SchemaForm extends React.Component {
       })
     ),
     isLoading: PropTypes.bool,
+    onUnmount: PropTypes.func,
     onSubmit: PropTypes.func.isRequired,
     submitText: PropTypes.string,
+    successURL: PropTypes.string.isRequired,
   }
 
   constructor(props) {
@@ -41,6 +46,12 @@ class SchemaForm extends React.Component {
 
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
+  componentWillUnmount() {
+    if (this.props.onUnmount) {
+      this.props.onUnmount();
+    }
   }
 
   handleChange(e) {
@@ -56,6 +67,10 @@ class SchemaForm extends React.Component {
   }
 
   render() {
+    if (this.props.isComplete) {
+      return <Redirect to={this.props.successURL} />;
+    }
+
     return (
       <Row>
         <Col sm={12} md={8} mdOffset={2} lg={6} lgOffset={3}>
