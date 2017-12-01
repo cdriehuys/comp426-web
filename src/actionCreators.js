@@ -6,8 +6,11 @@ import * as actions from './actions';
 import { APIClient } from './services';
 
 
-export const loginFail = () => ({
+export const loginFail = (errors) => ({
   type: actions.LOGIN_FAIL,
+  payload: {
+    loginErrors: errors,
+  },
 });
 
 
@@ -29,5 +32,5 @@ export const login = (username, password) => (dispatch) => {
 
   return APIClient.login(username, password)
     .then((data) => dispatch(loginSuccess(data.token)))
-    .catch(() => dispatch(loginFail()));
+    .catch((error) => dispatch(loginFail(error.response.data)));
 }

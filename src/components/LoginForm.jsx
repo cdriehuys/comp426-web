@@ -4,17 +4,22 @@ import { Button, Col, Row } from 'react-bootstrap';
 import { connect } from 'react-redux';
 
 import { login } from '../actionCreators';
-import { isLoggingIn } from '../selectors';
+import { getLoginErrors, isLoggingIn } from '../selectors';
 import FormField from './FormField';
 
 
 class LoginForm extends React.Component {
 
   static defaultProps = {
+    errors: {},
     isLoading: false,
   };
 
   static propTypes = {
+    errors: PropTypes.shape({
+      non_field_errors: PropTypes.arrayOf(PropTypes.string),
+      password: PropTypes.arrayOf(PropTypes.string),
+      username: PropTypes.arrayOf(PropTypes.string)}),
     isLoading: PropTypes.bool,
     onSubmit: PropTypes.func.isRequired,
   };
@@ -48,7 +53,9 @@ class LoginForm extends React.Component {
       <Row>
         <Col sm={12} md={8} mdOffset={2} lg={6} lgOffset={3}>
           <form onSubmit={this.handleSubmit}>
+            {this.renderFormErrors()}
             <FormField
+              errors={this.props.errors.username}
               label="Username"
               name="username"
               onChange={this.handleChange}
@@ -74,10 +81,32 @@ class LoginForm extends React.Component {
       </Row>
     );
   }
+
+  renderFormErrors() {
+    const errors = this.props.errors.non_field_errors;
+
+    if (!errors) {
+      return null;
+    }
+
+    if (errors.length === 1) {
+      return <div className="alert alert-danger">{errors[0]}</div>;
+    }
+
+    return (
+      <div className="alert alert-danger">
+        <strong>Errors:</strong>
+        <ul>
+          {errors.map(error => <li key={error}>{error}</li>)}
+        </ul>
+      </div>
+    );
+  }
 }
 
 
 const mapStateToProps = state => ({
+  errors: getLoginErrors(state),
   isLoading: isLoggingIn(state),
 });
 

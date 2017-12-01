@@ -2,6 +2,7 @@ import { LOGIN_FAIL, LOGIN_START, LOGIN_SUCCESS } from '../actions';
 
 
 const defaultState = {
+  loginErrors: {},
   loginPending: false,
   token: '',
 }
@@ -12,6 +13,7 @@ export default (state = defaultState, action) => {
     case LOGIN_FAIL:
       return {
         ...state,
+        ...action.payload,
         loginPending: false,
       }
 
@@ -25,6 +27,7 @@ export default (state = defaultState, action) => {
       return {
         ...state,
         ...action.payload,
+        loginErrors: {},
         loginPending: false,
       }
 
