@@ -5,7 +5,7 @@ import { LoginForm } from '../components';
 
 const LoginPage = () => (
   <div>
-    <h1 className="text-center">Register</h1>
+    <h1 className="text-center">Log In</h1>
     <LoginForm />
   </div>
 );
