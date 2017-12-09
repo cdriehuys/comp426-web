@@ -2,9 +2,10 @@ import React from 'react';
 import { Grid } from 'react-bootstrap';
 import { Route } from 'react-router-dom';
 
+
 import { AppNav } from '../components';
 import { HomePage, LoginPage, RegistrationPage } from '../pages';
-
+ 
 
 const AppContainer = () => [
   <AppNav key="navbar" />,
