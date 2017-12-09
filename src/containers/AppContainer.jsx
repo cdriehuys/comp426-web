@@ -4,7 +4,7 @@ import { Route } from 'react-router-dom';
 
 
 import { AppNav } from '../components';
-import { HomePage, LoginPage, RegistrationPage } from '../pages';
+import { HomePage, LoginPage, RegistrationPage, TeamListPage } from '../pages';
  
 
 const AppContainer = () => [
@@ -13,6 +13,7 @@ const AppContainer = () => [
   	<Route exact path="/" component={HomePage} />
     <Route path="/login/" component={LoginPage} />
     <Route path="/register/" component={RegistrationPage} />
+    <Route path="/teams/" component={TeamListPage} />
   </Grid>,
 ];
 
