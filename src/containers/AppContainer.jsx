@@ -13,7 +13,7 @@ const AppContainer = () => [
   	<Route exact path="/" component={HomePage} />
     <Route path="/login/" component={LoginPage} />
     <Route path="/register/" component={RegistrationPage} />
-    <Route path="/teamlist/" component={TeamListPage} />
+    <Route path="/teams/" component={TeamListPage} />
   </Grid>,
 ];
 
