@@ -5,7 +5,7 @@ import { ControlLabel, FormControl, FormGroup, HelpBlock } from 'react-bootstrap
 
 const renderErrors = (errors) => {
   if (errors.length === 1) {
-    return   errors[0];
+    return errors[0];
   }
 
   return (
