@@ -33,7 +33,12 @@ class SchemaForm extends React.Component {
     onUnmount: PropTypes.func,
     onSubmit: PropTypes.func.isRequired,
     submitText: PropTypes.string,
-    successURL: PropTypes.string.isRequired,
+    successURL: PropTypes.oneOfType([
+      PropTypes.string,
+      PropTypes.shape({
+        pathname: PropTypes.string.isRequired,
+      }),
+    ]),
   }
 
   constructor(props) {

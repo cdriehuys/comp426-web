@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router';
 
 import { login, loginReset } from '../actionCreators';
 import { getLoginErrors, isLoggingIn, isLoginComplete } from '../selectors';
@@ -20,7 +21,7 @@ const LoginForm = props => (
         type: 'password',
       },
     }}
-    successURL="/"
+    successURL={props.location.state.from || { pathname: '/' }}
   />
 );
 
@@ -38,4 +39,4 @@ const mapDispatchToProps = dispatch => ({
 });
 
 
-export default connect(mapStateToProps, mapDispatchToProps)(LoginForm);
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(LoginForm));
