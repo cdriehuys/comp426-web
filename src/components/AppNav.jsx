@@ -3,7 +3,7 @@ import React from 'react';
 import { MenuItem, Nav, NavDropdown, NavItem, Navbar } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import { LinkContainer } from 'react-router-bootstrap';
-import { Link } from 'react-router-dom';
+import { NavLink, Link } from 'react-router-dom';
 import { logout } from '../actionCreators';
 import { getCurrentUser } from '../selectors';
 
@@ -17,11 +17,12 @@ const UNAUTHENTICATED_LINKS = {
 const AppNav = ({ currentUser, onLogOut }) => {
   let links;
   if (currentUser !== null) {
-    links = (
-      <NavDropdown eventKey={3} title={currentUser.username} id="basic-nav-dropdown">
+    links = [
+      <LinkContainer key={1} to="/teams/"><NavItem>My Teams</NavItem></LinkContainer>,
+      <NavDropdown key={2} eventKey={3} title={currentUser.username} id="basic-nav-dropdown">
         <MenuItem eventKey={3.1} onClick={onLogOut}>Log Out</MenuItem>
       </NavDropdown>
-    )
+    ];
   } else {
     links = Object.keys(UNAUTHENTICATED_LINKS).map(key => (
       <LinkContainer key={key} to={UNAUTHENTICATED_LINKS[key]}>
@@ -40,6 +41,7 @@ const AppNav = ({ currentUser, onLogOut }) => {
       </Navbar.Header>
       <Navbar.Collapse>
         <Nav pullRight>
+          <LinkContainer to="/teams/all/"><NavItem>All Teams</NavItem></LinkContainer>
           {links}
         </Nav>
       </Navbar.Collapse>
