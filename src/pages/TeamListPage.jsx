@@ -7,12 +7,6 @@ import { AllTeams, TeamDetailByID, UserTeams } from '../containers';
 import { MyTeam, PrivateRoute, TeamList } from '../components';
 
 
-const userTeams = [
-  { id: 1, name: 'Darkside' },
-  { id: 2, name: 'Triforce' },
-  { id: 3, name: 'Flyers' },
-];
-
 const TeamListPage = ({ match }) => (
   <Row>
     <Col sm={12} md={10} mdOffset={1} lg={8} lgOffset={2}>
@@ -33,6 +27,7 @@ TeamListPage.propTypes = {
     url: PropTypes.string.isRequired,
   }).isRequired,
 };
+
 
 
 export default TeamListPage;

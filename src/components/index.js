@@ -7,3 +7,4 @@ export { default as PrivateRoute } from './PrivateRoute';
 export { default as RegistrationForm } from './RegistrationForm';
 export { default as TeamDetail } from './TeamDetail';
 export { default as TeamList } from './TeamList';
+export { default as TeamForm } from './TeamForm';

@@ -22,10 +22,7 @@ const PlayerForm = props => (
         label: 'Number',
         required: true,
       },
-      role:{
-        label: 'Role',
-        required: true,
-      },
+
     }}
     successURL="/"
   />
