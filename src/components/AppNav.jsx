@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import { MenuItem, Nav, NavDropdown, NavItem,  Navbar } from 'react-bootstrap';
+import { MenuItem, Nav, NavDropdown, NavItem, Navbar } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import { LinkContainer } from 'react-router-bootstrap';
 import { NavLink, Link } from 'react-router-dom';
@@ -9,7 +9,6 @@ import { getCurrentUser } from '../selectors';
 
 
 const UNAUTHENTICATED_LINKS = {
-   'View Teams': '/teams/all/',
   'Log In': '/login/',
   Register: '/register/',
 };
