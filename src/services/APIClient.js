@@ -8,6 +8,13 @@ import axios from 'axios';
 class APIClient {
   static API_ROOT = 'https://api.ultimanager.com';
 
+  static getProfile = (token) => {
+    const url = `${APIClient.API_ROOT}/account/profile/`;
+
+    return axios.get(url, { headers: { Authorization: `Token ${token}` } })
+      .then(response => response.data)
+  }
+
   static login = (username, password) => {
     const url = `${APIClient.API_ROOT}/auth/login/`;
 

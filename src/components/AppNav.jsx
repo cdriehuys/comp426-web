@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import { LinkContainer } from 'react-router-bootstrap';
 import { Link } from 'react-router-dom';
 import { logout } from '../actionCreators';
-import { isAuthenticated } from '../selectors';
+import { getCurrentUser } from '../selectors';
 
 
 const UNAUTHENTICATED_LINKS = {
@@ -14,16 +14,14 @@ const UNAUTHENTICATED_LINKS = {
 };
 
 
-const AppNav = ({ isAuthenticated, onLogOut }) => {
+const AppNav = ({ currentUser, onLogOut }) => {
   let links;
-  if (isAuthenticated) {
-    links = <NavDropdown eventKey={3} title="Dropdown" id="basic-nav-dropdown">
+  if (currentUser !== null) {
+    links = (
+      <NavDropdown eventKey={3} title={currentUser.username} id="basic-nav-dropdown">
         <MenuItem eventKey={3.1} onClick={onLogOut}>Log Out</MenuItem>
-
-      </NavDropdown>;
-    //dropdown
-    
-
+      </NavDropdown>
+    )
   } else {
     links = Object.keys(UNAUTHENTICATED_LINKS).map(key => (
       <LinkContainer key={key} to={UNAUTHENTICATED_LINKS[key]}>
@@ -50,17 +48,19 @@ const AppNav = ({ isAuthenticated, onLogOut }) => {
 }
 
 AppNav.defaultProps = {
-  isAuthenticated: false,
+  currentUser: null,
 };
 
 AppNav.propTypes = {
-  isAuthenticated: PropTypes.bool,
+  currentUser: PropTypes.shape({
+    username: PropTypes.string.isRequired,
+  }),
   onLogOut: PropTypes.func.isRequired,
 };
 
 
 const mapStateToProps = state => ({
-  isAuthenticated: isAuthenticated(state),
+  currentUser: getCurrentUser(state),
 });
 
 

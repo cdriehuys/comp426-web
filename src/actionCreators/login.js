@@ -1,6 +1,8 @@
 import * as actions from '../actions';
 import { APIClient } from '../services';
 
+import { fetchProfile } from './profile';
+
 
 const loginFail = (errors) => ({
   type: actions.LOGIN_FAIL,
@@ -33,5 +35,6 @@ export const login = (username, password) => (dispatch) => {
 
   return APIClient.login(username, password)
     .then(data => dispatch(loginSuccess(data.token)))
+    .then(() => dispatch(fetchProfile()))
     .catch(error => dispatch(loginFail(error.response.data)));
 }
