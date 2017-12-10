@@ -1,17 +1,24 @@
 import React from 'react';
 import { Col, Row } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
 
 import { TeamList } from '../components';
+
+
+const teams = [
+  { id: 1, name: 'Darkside' },
+  { id: 2, name: 'Triforce' },
+  { id: 3, name: 'Flyers' },
+];
+
 
 const TeamListPage = () => (
   <div>
     <Row>
-      <Col sm={12} md={8} mdOffset={2} lg={6} lgOffset={3}>
-        <h1>My Teams</h1>
-        <TeamList teams={['Darkside','Triforce','Flyers']}/>
+      <Col sm={12} md={10} mdOffset={1} lg={8} lgOffset={2}>
+        <h1 className="text-center">My Teams</h1>
+        <TeamList teams={teams}/>
       </Col>
-    </Row> 
+    </Row>
   </div>
 );
 
