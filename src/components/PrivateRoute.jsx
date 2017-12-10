@@ -29,7 +29,7 @@ PrivateRoute.defaultProps = {
 };
 
 PrivateRoute.propTypes = {
-  component: PropTypes.element,
+  component: PropTypes.node,
   isAuthenticated: PropTypes.bool,
   render: PropTypes.func,
 };

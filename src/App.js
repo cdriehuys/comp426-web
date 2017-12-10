@@ -3,6 +3,7 @@ import React from 'react';
 import { Provider } from 'react-redux';
 import { BrowserRouter } from 'react-router-dom';
 import { applyMiddleware, createStore } from 'redux';
+import { composeWithDevTools } from 'redux-devtools-extension';
 import logger from 'redux-logger';
 import reduxThunk from 'redux-thunk';
 
@@ -12,9 +13,10 @@ import appReducer from './reducers';
 
 const store = createStore(
   appReducer,
-  applyMiddleware(
-    reduxThunk,
-    logger));
+  composeWithDevTools(
+    applyMiddleware(
+      reduxThunk,
+      logger)));
 
 
 const App = () => (

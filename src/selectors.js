@@ -17,6 +17,10 @@ export const getLoginErrors = state => state.auth.loginErrors;
 export const getRegistrationErrors = state => state.registration.registerErrors;
 
 
+export const getUserTeams = (state, user) => getAllTeams(state)
+  .filter(team => team.user === user.id);
+
+
 export const isAuthenticated = state => state.auth.token.length !== 0;
 
 
