@@ -1,26 +1,39 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 import { Col, Row } from 'react-bootstrap';
+import { Route, Switch } from 'react-router-dom';
 
-import { TeamList } from '../components';
+import { AllTeams, TeamDetailByID, UserTeams } from '../containers';
+import { MyTeam, PrivateRoute, TeamList } from '../components';
 
 
-const teams = [
+const userTeams = [
   { id: 1, name: 'Darkside' },
   { id: 2, name: 'Triforce' },
   { id: 3, name: 'Flyers' },
 ];
 
 
-const TeamListPage = () => (
-  <div>
-    <Row>
-      <Col sm={12} md={10} mdOffset={1} lg={8} lgOffset={2}>
-        <h1 className="text-center">My Teams</h1>
-        <TeamList teams={teams}/>
-      </Col>
-    </Row>
-  </div>
+const TeamListPage = ({ match }) => (
+  <Row>
+    <Col sm={12} md={10} mdOffset={1} lg={8} lgOffset={2}>
+      <Switch>
+        {/* Route to render all teams */}
+        <Route path={`${match.url}/all/`} component={AllTeams} />
+        {/* Route to render a specific team */}
+        <Route path={`${match.url}/:id/`} component={TeamDetailByID} />
+        {/* Fall back to rendering the user's teams */}
+        <PrivateRoute path={`${match.url}`} component={UserTeams} />
+      </Switch>
+    </Col>
+  </Row>
 );
+
+TeamListPage.propTypes = {
+  match: PropTypes.shape({
+    url: PropTypes.string.isRequired,
+  }).isRequired,
+};
 
 
 export default TeamListPage;

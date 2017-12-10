@@ -6,12 +6,12 @@ import { Redirect, Route, withRouter } from 'react-router-dom';
 import { isAuthenticated } from '../selectors';
 
 
-const PrivateRoute = ({ component: Component, isAuthenticated, ...rest }) => (
+const PrivateRoute = ({ component: Component, render, isAuthenticated, ...rest }) => (
   <Route
     {...rest}
     render={props => (
       isAuthenticated ? (
-        <Component {...props} />
+        render ? render() : <Component {...props} />
       ) : (
         <Redirect
           to={{
@@ -29,7 +29,9 @@ PrivateRoute.defaultProps = {
 };
 
 PrivateRoute.propTypes = {
+  component: PropTypes.element,
   isAuthenticated: PropTypes.bool,
+  render: PropTypes.func,
 };
 
 
