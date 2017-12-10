@@ -3,7 +3,7 @@ import { Grid } from 'react-bootstrap';
 import { Route } from 'react-router-dom';
 
 import { AppNav } from '../components';
-import { HomePage, LoginPage, RegistrationPage, TeamHomePage, TeamListPage } from '../pages';
+import { HomePage, LoginPage, MyTeamPage, RegistrationPage, TeamListPage } from '../pages';
 
 
 const AppContainer = () => [
@@ -12,8 +12,8 @@ const AppContainer = () => [
   	<Route exact path="/" component={HomePage} />
     <Route path="/login/" component={LoginPage} />
     <Route path="/register/" component={RegistrationPage} />
-    <Route path="/teamhome/" component={TeamHomePage} />
-    <Route path="/teams/" component={TeamListPage} />
+    <Route exact path="/teams/" component={TeamListPage} />
+    <Route path="/teams/:id/" component={MyTeamPage} />
   </Grid>,
 ];
 

@@ -13,6 +13,7 @@ const HomePage = () => (
   		    <p>UltiManager allows you to record statistics for a new game, or view the results of previous games.</p>
         </Jumbotron>
         <Image responsive src={image} />
+        <p>Image: Brian Whittier, 2017, Carolina Kickoff Event, UNC at Chapel Hill at Hooker Fields.</p>
       </Col>
     </Row>
   </div>

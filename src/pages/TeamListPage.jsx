@@ -9,10 +9,9 @@ const TeamListPage = () => (
     <Row>
       <Col sm={12} md={8} mdOffset={2} lg={6} lgOffset={3}>
         <h1>My Teams</h1>
-        <TeamList teams={['Darkside','Trifroce','lyers']}/>
+        <TeamList teams={['Darkside','Triforce','Flyers']}/>
       </Col>
-    </Row>
-    
+    </Row> 
   </div>
 );
 
