@@ -4,7 +4,7 @@ import { Col, Row } from 'react-bootstrap';
 import { Route, Switch } from 'react-router-dom';
 
 import { AllTeams, TeamDetailByID, UserTeams } from '../containers';
-import { MyTeam, PrivateRoute, TeamForm, TeamList } from '../components';
+import { PrivateRoute, TeamForm } from '../components';
 
 
 const TeamListPage = ({ match }) => (
