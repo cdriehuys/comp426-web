@@ -2,6 +2,9 @@
  * Functions for selecting slices of state.
  */
 
+export const getAllTeams = state => Object.keys(state.teams).map(id => state.teams[id]);
+
+
 export const getAuthToken = state => state.auth.token;
 
 
