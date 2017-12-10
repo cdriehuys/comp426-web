@@ -1,10 +1,9 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import { Nav, NavItem, Navbar } from 'react-bootstrap';
+import { MenuItem, Nav, NavDropdown, NavItem, Navbar } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import { LinkContainer } from 'react-router-bootstrap';
 import { Link } from 'react-router-dom';
-
 import { logout } from '../actionCreators';
 import { isAuthenticated } from '../selectors';
 
@@ -18,7 +17,13 @@ const UNAUTHENTICATED_LINKS = {
 const AppNav = ({ isAuthenticated, onLogOut }) => {
   let links;
   if (isAuthenticated) {
-    links = <NavItem onClick={onLogOut}>Log Out</NavItem>;
+    links = <NavDropdown eventKey={3} title="Dropdown" id="basic-nav-dropdown">
+        <MenuItem eventKey={3.1} onClick={onLogOut}>Log Out</MenuItem>
+
+      </NavDropdown>;
+    //dropdown
+    
+
   } else {
     links = Object.keys(UNAUTHENTICATED_LINKS).map(key => (
       <LinkContainer key={key} to={UNAUTHENTICATED_LINKS[key]}>

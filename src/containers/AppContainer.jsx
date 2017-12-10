@@ -3,7 +3,7 @@ import { Grid } from 'react-bootstrap';
 import { Route } from 'react-router-dom';
 
 import { AppNav } from '../components';
-import { HomePage, LoginPage, RegistrationPage, TeamListPage } from '../pages';
+import { HomePage, LoginPage, RegistrationPage, TeamHomePage, TeamListPage } from '../pages';
 
 
 const AppContainer = () => [
