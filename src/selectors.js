@@ -2,6 +2,11 @@
  * Functions for selecting slices of state.
  */
 
+export const getAuthToken = state => state.auth.token;
+
+
+export const getCurrentUser = state => state.users[state.auth.currentUser];
+
 
 export const getLoginErrors = state => state.auth.loginErrors;
 

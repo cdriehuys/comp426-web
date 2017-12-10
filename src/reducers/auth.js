@@ -1,7 +1,15 @@
-import { LOGIN_FAIL, LOGIN_RESET, LOGIN_START, LOGIN_SUCCESS, LOGOUT } from '../actions';
+import {
+  LOGIN_FAIL,
+  LOGIN_RESET,
+  LOGIN_START,
+  LOGIN_SUCCESS,
+  LOGOUT,
+  PROFILE_FETCH_SUCCESS,
+} from '../actions';
 
 
 const defaultState = {
+  currentUser: null,
   loginComplete: false,
   loginErrors: {},
   loginPending: false,
@@ -44,7 +52,14 @@ export default (state = defaultState, action) => {
     case LOGOUT:
       return {
         ...state,
+        currentUser: null,
         token: '',
+      }
+
+    case PROFILE_FETCH_SUCCESS:
+      return {
+        ...state,
+        currentUser: action.payload.profile.id,
       }
 
     default:
