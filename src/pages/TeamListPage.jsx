@@ -13,7 +13,6 @@ const userTeams = [
   { id: 3, name: 'Flyers' },
 ];
 
-
 const TeamListPage = ({ match }) => (
   <Row>
     <Col sm={12} md={10} mdOffset={1} lg={8} lgOffset={2}>
