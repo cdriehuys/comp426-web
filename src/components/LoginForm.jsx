@@ -7,23 +7,27 @@ import { getLoginErrors, isLoggingIn, isLoginComplete } from '../selectors';
 import SchemaForm from './SchemaForm';
 
 
-const LoginForm = props => (
-  <SchemaForm
-    {...props}
-    fields={{
-      username: {
-        label: 'Username',
-        required: true,
-      },
-      password: {
-        label: 'Password',
-        required: true,
-        type: 'password',
-      },
-    }}
-    successURL={props.location.state.from || { pathname: '/' }}
-  />
-);
+const LoginForm = props => {
+  const { from } = props.location.state || { from: { pathname: '/' } };
+
+  return (
+    <SchemaForm
+      {...props}
+      fields={{
+        username: {
+          label: 'Username',
+          required: true,
+        },
+        password: {
+          label: 'Password',
+          required: true,
+          type: 'password',
+        },
+      }}
+      successURL={from}
+    />
+  );
+}
 
 
 const mapStateToProps = state => ({
