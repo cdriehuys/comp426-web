@@ -17,6 +17,9 @@ export const getLoginErrors = state => state.auth.loginErrors;
 export const getRegistrationErrors = state => state.registration.registerErrors;
 
 
+export const getTeam = (state, teamId) => state.teams[teamId];
+
+
 export const getUserTeams = (state, user) => getAllTeams(state)
   .filter(team => team.user === user.id);
 

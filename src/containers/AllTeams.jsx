@@ -17,7 +17,7 @@ class AllTeams extends React.Component {
     teams: PropTypes.arrayOf(PropTypes.shape({
       id: PropTypes.number.isRequired,
       name: PropTypes.string.isRequired,
-    }))
+    })),
   };
 
   componentDidMount() {

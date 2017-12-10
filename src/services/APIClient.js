@@ -15,6 +15,12 @@ class APIClient {
       .then(response => response.data)
   }
 
+  static getTeam = (teamId) => {
+    const url = `${APIClient.API_ROOT}/team-management/teams/${teamId}/`;
+
+    return axios.get(url).then(response => response.data);
+  }
+
   static getTeams = () => {
     const url = `${APIClient.API_ROOT}/team-management/teams/`;
 
