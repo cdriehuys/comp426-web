@@ -18,3 +18,6 @@ This project is licensed under the MIT License.
 ## Authors
 
 Chathan Driehuys (chathan@driehuys.com)
+Samuel Lee (samuel@lee.com)
+Elijah Long (elijah@long.com)
+Suraj Madiraju (suraj@madiraju.com)
