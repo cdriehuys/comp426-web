@@ -6,13 +6,11 @@ import { LinkContainer } from 'react-router-bootstrap';
 import AddTeam from './AddTeam';
 
 
-const TeamList = ({ canEdit, teams }) => (
+const TeamList = ({ teams }) => (
   <div>
-    {canEdit && (
-      <LinkContainer to="/teams/add/">
-        <Button bsStyle="primary">Add Team</Button>
-      </LinkContainer>
-    )}
+    <LinkContainer to="/teams/add/">
+      <Button bsStyle="primary">Add Team</Button>
+    </LinkContainer>
     <ListGroup>
       {teams.map(team => (
         <LinkContainer key={team.id} to={`/teams/${team.id}/`}>
@@ -24,12 +22,10 @@ const TeamList = ({ canEdit, teams }) => (
 );
 
 TeamList.defaultProps = {
-  canEdit: false,
   teams: [],
 };
 
 TeamList.propTypes = {
-  canEdit: PropTypes.bool,
   teams: PropTypes.arrayOf(PropTypes.shape({
     id: PropTypes.number.isRequired,
     name: PropTypes.string.isRequired,

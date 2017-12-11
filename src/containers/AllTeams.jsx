@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 
 import { fetchTeams } from '../actionCreators';
 import { TeamList } from '../components';
-import { isAuthenticated, getAllTeams } from '../selectors';
+import { getAllTeams } from '../selectors';
 
 
 class AllTeams extends React.Component {
@@ -13,7 +13,6 @@ class AllTeams extends React.Component {
   };
 
   static propTypes = {
-    canEdit: PropTypes.bool.isRequired,
     loadTeams: PropTypes.func.isRequired,
     teams: PropTypes.arrayOf(PropTypes.shape({
       id: PropTypes.number.isRequired,
@@ -29,7 +28,7 @@ class AllTeams extends React.Component {
     return (
       <div>
         <h1 className="text-center">All Teams</h1>
-        <TeamList canEdit={this.props.canEdit} teams={this.props.teams} />
+        <TeamList teams={this.props.teams} />
       </div>
     );
   }
@@ -37,7 +36,6 @@ class AllTeams extends React.Component {
 
 
 const mapStateToProps = state => ({
-  canEdit: isAuthenticated(state),
   teams: getAllTeams(state),
 });
 

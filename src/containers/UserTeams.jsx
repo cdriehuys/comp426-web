@@ -29,7 +29,7 @@ class UserTeams extends React.Component {
     return (
       <div>
         <h1 className="text-center">My Teams</h1>
-        <TeamList canEdit={this.props.canEdit} teams={this.props.teams} />
+        <TeamList teams={this.props.teams} />
       </div>
     );
   }
@@ -40,7 +40,6 @@ const mapStateToProps = state => {
   const user = getCurrentUser(state);
 
   return {
-    canEdit: !!user,
     teams: user ? getUserTeams(state, user) : [],
   }
 };
