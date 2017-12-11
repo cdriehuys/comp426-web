@@ -5,7 +5,7 @@ import { LinkContainer } from 'react-router-bootstrap';
 import { Route, Switch, withRouter } from 'react-router-dom';
 
 import { TeamPlayerList } from '../containers';
-import { AddPlayer, GamesList, GameStatistics, PlayerForm } from '../components';
+import { GamesList, GameStatistics, PlayerForm } from '../components';
 
 
 const games = [

@@ -1,12 +1,10 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import { ListGroup, ListGroupItem } from 'react-bootstrap';
-import { LinkContainer } from 'react-router-bootstrap';
 
 import {PieChart} from 'react-easy-chart';
 
 const GameStatistics = ({ game }) => (
-  
+
   <div>
     <h3>{game.name} vs {game.opposing_team_name}</h3>
     <p> {game.name} : {game.points_for} to {game.opposing_team_name} : {game.points_against}</p>
