@@ -7,25 +7,24 @@ import SchemaForm from './SchemaForm';
 
 
 const PlayerForm = props => (
-  <SchemaForm
-    {...props}
-    fields={{
-      firstname: {
-        label: 'First Name',
-        required: true,
-      },
-      lastname: {
-        label: 'Last Name',
-        required: true,
-      },
-      number: {
-        label: 'Number',
-        required: true,
-      },
-
-    }}
-    successURL="/"
-  />
+  <div>
+    <h2 className="text-center">Add Player</h2>
+    <SchemaForm
+      {...props}
+      fields={{
+        name: {
+          label: 'Name',
+          required: true,
+        },
+        number: {
+          label: 'Number',
+          required: true,
+          type: 'number',
+        },
+      }}
+      successURL="/"
+    />
+  </div>
 );
 
 
