@@ -22,10 +22,9 @@ const TeamDetail = ({ canEdit, match, team }) => (
     <PageHeader>{team.name}</PageHeader>
 
     <Switch>
-      <Route path={`${match.url}/players/add/`} component={PlayerForm} />
+      <Route path={`${match.path}players/add/`} component={PlayerForm} />
 
       <Route
-        path={`${match.url}`}
         render={() => (
           <Tabs defaultActiveKey={1} id="team-tabs">
             <Tab eventKey={1} title="Roster">
@@ -33,7 +32,7 @@ const TeamDetail = ({ canEdit, match, team }) => (
                 <Col sm={6} md={6} lg={6}>
                   <TeamPlayerList canEdit={canEdit} />
                   {canEdit && (
-                    <LinkContainer to={`${match.url}/players/add/`}>
+                    <LinkContainer to={`${match.url}players/add/`}>
                       <Button bsStyle="primary">Add Player</Button>
                     </LinkContainer>
                   )}
@@ -80,6 +79,7 @@ TeamDetail.defaultProps = {
 TeamDetail.propTypes = {
   canEdit: PropTypes.bool,
   match: PropTypes.shape({
+    path: PropTypes.string.isRequired,
     url: PropTypes.string.isRequired,
   }).isRequired,
   team: PropTypes.shape({

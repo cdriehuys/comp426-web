@@ -1,16 +1,17 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 import { connect } from 'react-redux';
 
-import { login, loginReset } from '../actionCreators';
-import { getLoginErrors, isLoggingIn, isLoginComplete } from '../selectors';
+import { addPlayer, resetAddPlayerForm } from '../actionCreators';
+import { getFormErrors, isFormComplete, isFormPending } from '../selectors';
 import SchemaForm from './SchemaForm';
 
 
-const PlayerForm = props => (
+const PlayerForm = ({ teamId, ...rest }) => (
   <div>
     <h2 className="text-center">Add Player</h2>
     <SchemaForm
-      {...props}
+      {...rest}
       fields={{
         name: {
           label: 'Name',
@@ -22,10 +23,39 @@ const PlayerForm = props => (
           type: 'number',
         },
       }}
-      successURL="/"
+      successURL={`/teams/${teamId}/`}
     />
   </div>
 );
 
+PlayerForm.propTypes = {
+  teamId: PropTypes.number.isRequired,
+};
 
-export default PlayerForm;
+
+const mapStateToProps = (state, ownProps) => ({
+  errors: getFormErrors(state, 'addPlayer'),
+  isComplete: isFormComplete(state, 'addPlayer'),
+  isLoading: isFormPending(state, 'addPlayer'),
+  teamId: parseInt(ownProps.match.params.id, 10),
+});
+
+
+const mapDispatchToProps = (dispatch, ownProps) => ({
+  onSubmit: player => dispatch(addPlayer(ownProps.match.params.id, player)),
+  onUnmount: () => dispatch(resetAddPlayerForm()),
+});
+
+
+const ConnectedPlayerForm = connect(mapStateToProps, mapDispatchToProps)(PlayerForm);
+
+ConnectedPlayerForm.propTypes = {
+  match: PropTypes.shape({
+    params: PropTypes.shape({
+      id: PropTypes.string.isRequired,
+    }).isRequired,
+  }).isRequired,
+};
+
+
+export default ConnectedPlayerForm;

@@ -3,6 +3,15 @@ import * as actions from '../actions';
 
 export default (state = {}, action = {}) => {
   switch (action.type) {
+    case actions.PLAYER_ADD_SUCCESS:
+      return {
+        ...state,
+        [action.payload.player.team]: {
+          ...state[action.payload.player.team],
+          players: [...state[action.payload.player.team].players, action.payload.player.id],
+        },
+      };
+
     case actions.TEAM_ADD_SUCCESS:
     case actions.TEAM_FETCH_SUCCESS:
       return {

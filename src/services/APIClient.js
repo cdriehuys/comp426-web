@@ -12,6 +12,13 @@ class APIClient {
   static API_ROOT = 'https://api.ultimanager.com';
   static TEAM_MANAGMENT_ROOT = `${APIClient.API_ROOT}/team-management`;
 
+  static createPlayer = (token, teamId, player) => {
+    const url = `${APIClient.TEAM_MANAGMENT_ROOT}/teams/${teamId}/players/`;
+
+    return axios.post(url, player, { headers: getAuthHeaders(token) })
+      .then(response => response.data);
+  }
+
   static createTeam = (token, team) => {
     const url = `${APIClient.TEAM_MANAGMENT_ROOT}/teams/`;
 
