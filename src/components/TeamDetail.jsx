@@ -5,11 +5,11 @@ import { LinkContainer } from 'react-router-bootstrap';
 import { Route, Switch, withRouter } from 'react-router-dom';
 
 import { TeamGameList, TeamPlayerList } from '../containers';
-import { GameForm, GameStatistics, GameTracker, PlayerForm } from '../components';
+import { GameForm, GameStatistics, GameTracker, PlayerForm, TeamStatistics } from '../components';
 
 
-const game = {id: 1, name: 'SF Bridges', opposing_team_name: 'LA Planes', points_for: 11, points_against: 5};
-
+const game = {id: 1, name: 'SF Bridges', opposing_team_name: 'UNCW', points_for: 11, points_against: 5};
+const teamstats = {id: 1, name: 'SF Bridges', games_lost: 4, games_won: 5};
 
 const TeamDetail = ({ canEdit, match, team }) => (
   <div>
@@ -53,7 +53,7 @@ const TeamDetail = ({ canEdit, match, team }) => (
               <div>
                 <h2>Games</h2>
                 <Col sm={6} md={6} lg={6}>
-                  {canEdit && (
+                  {/*canEdit && (
                     <Well>
                       <ButtonToolbar>
                         <LinkContainer to={`${match.url}games/add/`}>
@@ -61,21 +61,20 @@ const TeamDetail = ({ canEdit, match, team }) => (
                         </LinkContainer>
                       </ButtonToolbar>
                     </Well>
-                  )}
+                  )*/}
                   <TeamGameList canEdit={canEdit} />
-                  {/* TODO: Insert ADD GAME BUTTON*/}
                 </Col>
                 <Col sm={6} md={6} lg={6} className="text-center">
 
                   <p>Click on a game to view general stats.</p>
 
-                  <GameStatistics game={game} />
+                  <Route path={`${match.path}games/:gameId/`} component={GameStatistics} />
                 </Col>
               </div>
             </Tab>
-
             <Tab eventKey={3} title="Statistics">
-              <p> Here are over all team statistics.  Pie chart with how many games were won or lost.</p>
+              <p> Here are over all team statistics.</p>
+              <TeamStatistics team={team} />
             </Tab>
           </Tabs>
         )}

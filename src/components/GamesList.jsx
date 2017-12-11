@@ -9,7 +9,7 @@ const GamesList = ({ games }) => (
     {games.length > 0 ? (
     <ListGroup>
       {games.map(game => (
-        <LinkContainer key={game.id} to={`/games/${game.id}/`}>
+        <LinkContainer key={game.id} to={`/teams/${game.team}/games/${game.id}/`}>
           <ListGroupItem header={game.opponent} />
         </LinkContainer>
       ))}

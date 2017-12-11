@@ -1,13 +1,16 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-
 import {PieChart} from 'react-easy-chart';
+import { connect } from 'react-redux';
 
-const GameStatistics = ({ game }) => (
+import { getGame, getTeam } from '../selectors';
+
+
+const GameStatistics = ({ game, team }) => (
 
   <div>
-    <h3>{game.name} vs {game.opposing_team_name}</h3>
-    <p> {game.name} : {game.points_for} to {game.opposing_team_name} : {game.points_against}</p>
+    <h3>{team.name} vs {game.opponent}</h3>
+    <p> {team.name} : {game.home_points} to {game.opponent} : {game.opponent_points}</p>
     <PieChart
       size={200}
       innerHoleSize={100}
@@ -23,11 +26,11 @@ const GameStatistics = ({ game }) => (
         }
       }}
       data={[
-        {key: (100 * game.points_for/(game.points_for+game.points_against))+'%', value: game.points_for, color: '#dce7c5 '},
-        {key: (100 * game.points_against/(game.points_for+game.points_against))+'%', value: game.points_against, color: '#e3a51a '}
+        {key: (100 * game.home_points/(game.home_points+game.opponent_points))+'%', value: game.home_points, color: '#dce7c5 '},
+        {key: (100 * game.opponent_points/(game.home_points+game.opponent_points))+'%', value: game.opponent_points, color: '#e3a51a '}
       ]}
     />
-    <p>Light Green: Points {game.name} scored<br/>Red-orange: Points {game.opposing_team_name} scored </p>
+    <p>Light Green: Points {team.name} scored<br/>Red-orange: Points {game.opponent} scored </p>
   </div>
 );
 
@@ -38,12 +41,19 @@ GameStatistics.defaultProps = {
 GameStatistics.propTypes = {
   game: PropTypes.shape({
     id: PropTypes.number.isRequired,
-    name: PropTypes.string.isRequired,
-    opposing_team_name: PropTypes.string.isRequired,
-    points_for: PropTypes.number.isRequired,
-    points_against: PropTypes.number.isRequired,
+    opponent: PropTypes.string.isRequired,
+    home_points: PropTypes.number.isRequired,
+    opponent_points: PropTypes.number.isRequired,
   }),
 };
 
 
-export default GameStatistics;
+const mapStateToProps = (state, ownProps) => {
+  const game = getGame(state, ownProps.match.params.gameId);
+  const team = getTeam(state, game.team);
+
+  return { game, team };
+};
+
+
+export default connect(mapStateToProps)(GameStatistics);

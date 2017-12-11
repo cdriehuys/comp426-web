@@ -11,3 +11,4 @@ export { default as RegistrationForm } from './RegistrationForm';
 export { default as TeamDetail } from './TeamDetail';
 export { default as TeamForm } from './TeamForm';
 export { default as TeamList } from './TeamList';
+export { default as TeamStatistics } from './TeamStatistics';
