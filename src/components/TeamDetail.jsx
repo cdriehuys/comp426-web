@@ -4,15 +4,9 @@ import { Button, ButtonToolbar, Col, PageHeader, Tab, Tabs, Well } from 'react-b
 import { LinkContainer } from 'react-router-bootstrap';
 import { Route, Switch, withRouter } from 'react-router-dom';
 
-import { TeamPlayerList } from '../containers';
-import { GameForm, GameStatistics, GameTracker, GamesList, PlayerForm } from '../components';
+import { TeamGameList, TeamPlayerList } from '../containers';
+import { GameForm, GameStatistics, GameTracker, PlayerForm } from '../components';
 
-
-const games = [
-  {id: 1, name: "Darkside vs. Flyers"},
-  {id: 2, name: "Darkside vs. Triforce"},
-  {id: 3, name: "Triforce vs. Flyers"}
-];
 
 const game = {id: 1, name: 'SF Bridges', opposing_team_name: 'LA Planes', points_for: 11, points_against: 5};
 
@@ -53,8 +47,8 @@ const TeamDetail = ({ canEdit, match, team }) => (
             </Tab>
 
             <Tab eventKey={2} title="Games">
-              <div className="text-center">
-                <h2>Games Home</h2>
+              <div>
+                <h2>Games</h2>
                 <Col sm={6} md={6} lg={6}>
                   {canEdit && (
                     <Well>
@@ -65,7 +59,7 @@ const TeamDetail = ({ canEdit, match, team }) => (
                       </ButtonToolbar>
                     </Well>
                   )}
-                  <GamesList games={games}/>
+                  <TeamGameList canEdit={canEdit} />
                   {/* TODO: Insert ADD GAME BUTTON*/}
                 </Col>
                 <Col sm={6} md={6} lg={6} className="text-center">

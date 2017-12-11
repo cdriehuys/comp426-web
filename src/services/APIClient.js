@@ -46,6 +46,12 @@ class APIClient {
     return axios.get(url).then(response => response.data);
   };
 
+  static getTeamGames = (teamId) => {
+    const url = `${APIClient.TEAM_MANAGMENT_ROOT}/teams/${teamId}/games/`;
+
+    return axios.get(url).then(response => response.data);
+  };
+
   static getTeamPlayers = (teamId) => {
     const url = `${APIClient.TEAM_MANAGMENT_ROOT}/teams/${teamId}/players/`;
 

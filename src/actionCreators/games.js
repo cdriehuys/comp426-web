@@ -24,6 +24,15 @@ const addGameSuccess = game => ({
 });
 
 
+const fetchTeamGamesSuccess = (teamId, games) => ({
+  type: actions.TEAM_GAMES_FETCH_SUCCESS,
+  payload: {
+    games,
+    teamId,
+  },
+});
+
+
 export const addGame = (teamId, game) => (dispatch, getState) => {
   dispatch(addGameStart());
 
@@ -33,3 +42,7 @@ export const addGame = (teamId, game) => (dispatch, getState) => {
     .then(game => dispatch(addGameSuccess(game)))
     .catch(error => dispatch(addGameFail(error.response.data)));
 }
+
+
+export const fetchTeamGames = teamId => dispatch => APIClient.getTeamGames(teamId)
+  .then(games => dispatch(fetchTeamGamesSuccess(teamId, games)));

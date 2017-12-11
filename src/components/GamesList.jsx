@@ -6,11 +6,11 @@ import { LinkContainer } from 'react-router-bootstrap';
 
 const GamesList = ({ games }) => (
   <div>
-    {games.length > 5 ? (
+    {games.length > 0 ? (
     <ListGroup>
       {games.map(game => (
         <LinkContainer key={game.id} to={`/games/${game.id}/`}>
-          <ListGroupItem header={game.name} />
+          <ListGroupItem header={game.opponent} />
         </LinkContainer>
       ))}
     </ListGroup>
@@ -30,7 +30,7 @@ GamesList.defaultProps = {
 GamesList.propTypes = {
   games: PropTypes.arrayOf(PropTypes.shape({
     id: PropTypes.number.isRequired,
-    name: PropTypes.string.isRequired,
+    oppenent: PropTypes.string.isRequired,
   })),
 };
 
