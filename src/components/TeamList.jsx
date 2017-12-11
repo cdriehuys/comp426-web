@@ -23,9 +23,6 @@ const TeamList = ({ teams }) => (
         <p>This will be a lot more interesting if you add a team!</p>
       </Alert>
     )}
-    <LinkContainer to="/teams/add/">
-      <Button bsStyle="primary">Add Team</Button>
-    </LinkContainer>
   </div>
 );
 
