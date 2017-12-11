@@ -14,7 +14,6 @@ const games = [
 
 const PlayerList = ({ canEdit, players }) => (
   <div>
-    <h2>Roster</h2>
     {players.length > 0 ? (
       <ListGroup>
         {players.map(player => (

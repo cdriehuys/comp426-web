@@ -23,8 +23,11 @@ const TeamDetail = ({ canEdit, team }) => (
             <TeamPlayerList canEdit={canEdit} />
             {canEdit && <AddPlayer />}
           </Col>
-          <Col className="text-center">
-            <p>Click on a player to view their stats.</p>
+          <Col>
+            <div>
+              <h2 className="text-center">Player Stats</h2>
+              <p className="text-center">Click on a player to view their stats.</p>
+            </div>
           </Col>
         </div>
       </Tab>
@@ -35,6 +38,9 @@ const TeamDetail = ({ canEdit, team }) => (
           <Col sm={6} md={6} lg={6}>
             <GamesList games={games}/>
             {/* TODO: Insert ADD GAME BUTTON*/}
+          </Col>
+          <Col className="text-center">
+            <p>Click on a game to view general stats.</p>
           </Col>
         </div>
       </Tab>
