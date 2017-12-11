@@ -25,6 +25,7 @@ class SchemaForm extends React.Component {
     fields: PropTypes.objectOf(
       PropTypes.shape({
         label: PropTypes.string,
+        options: PropTypes.objectOf(PropTypes.string),
         required: PropTypes.bool,
         type: PropTypes.string,
       })
@@ -88,6 +89,7 @@ class SchemaForm extends React.Component {
                 label={this.props.fields[key].label || key}
                 name={key}
                 onChange={this.handleChange}
+                options={this.props.fields[key].options || {}}
                 required={this.props.fields[key].required || false}
                 type={this.props.fields[key].type || "text"}
                 value={this.state[key]}
