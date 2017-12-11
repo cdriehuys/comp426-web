@@ -5,7 +5,7 @@ import { LinkContainer } from 'react-router-bootstrap';
 import { Route, Switch, withRouter } from 'react-router-dom';
 
 import { TeamPlayerList } from '../containers';
-import { GameStatistics, GameTracker, GamesList, PlayerForm } from '../components';
+import { GameForm, GameStatistics, GameTracker, GamesList, PlayerForm } from '../components';
 
 
 const games = [
@@ -22,6 +22,8 @@ const TeamDetail = ({ canEdit, match, team }) => (
     <PageHeader>{team.name}</PageHeader>
 
     <Switch>
+      <Route path={`${match.path}games/add/`} component={GameForm} />
+
       <Route path={`${match.path}games/:gameId/tracker/`} component={GameTracker} />
 
       <Route path={`${match.path}players/add/`} component={PlayerForm} />
@@ -57,7 +59,7 @@ const TeamDetail = ({ canEdit, match, team }) => (
                   {canEdit && (
                     <Well>
                       <ButtonToolbar>
-                        <LinkContainer to={`${match.url}games/1/tracker/`}>
+                        <LinkContainer to={`${match.url}games/add/`}>
                           <Button bsStyle="primary">Track New Game</Button>
                         </LinkContainer>
                       </ButtonToolbar>
