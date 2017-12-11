@@ -26,8 +26,8 @@ const GameStatistics = ({ game, team }) => (
         }
       }}
       data={[
-        {key: (100 * game.home_points/(game.home_points+game.opponent_points))+'%', value: game.home_points, color: '#dce7c5 '},
-        {key: (100 * game.opponent_points/(game.home_points+game.opponent_points))+'%', value: game.opponent_points, color: '#e3a51a '}
+        {key: (100 * game.home_points/(game.home_points+game.opponent_points)).toFixed(2)+'%', value: game.home_points, color: '#dce7c5 '},
+        {key: (100 * game.opponent_points/(game.home_points+game.opponent_points)).toFixed(2)+'%', value: game.opponent_points, color: '#e3a51a '}
       ]}
     />
     <p>Light Green: Points {team.name} scored<br/>Red-orange: Points {game.opponent} scored </p>
@@ -35,7 +35,7 @@ const GameStatistics = ({ game, team }) => (
 );
 
 GameStatistics.defaultProps = {
-  game: [],
+  game: [], 
 };
 
 GameStatistics.propTypes = {
