@@ -19,6 +19,15 @@ export default (state = {}, action = {}) => {
         }), {}),
       };
 
+    case actions.TEAM_PLAYERS_FETCH_SUCCESS:
+      return {
+        ...state,
+        [action.payload.teamId]: {
+          ...state[action.payload.teamId],
+          players: action.payload.players.map(player => player.id),
+        },
+      };
+
     default:
       return state;
   }

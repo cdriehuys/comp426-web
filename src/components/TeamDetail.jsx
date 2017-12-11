@@ -2,6 +2,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import { PageHeader } from 'react-bootstrap';
 
+import { TeamPlayerList } from '../containers';
 import { AddPlayer, PlayerList } from '../components';
 
 
@@ -15,7 +16,7 @@ const darksidePlayers = [
 const TeamDetail = ({ team }) => (
   <div>
     <PageHeader>{team.name}</PageHeader>
-    <PlayerList players={darksidePlayers} />
+    <TeamPlayerList />
     <AddPlayer />
   </div>
 );
