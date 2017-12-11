@@ -3,8 +3,6 @@ import React from 'react';
 import { Alert, Button, ListGroup, ListGroupItem } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
 
-import AddTeam from './AddTeam';
-
 
 const TeamList = ({ teams }) => (
   <div>
@@ -25,7 +23,7 @@ const TeamList = ({ teams }) => (
     <LinkContainer to="/teams/add/">
       <Button bsStyle="primary">Add Team</Button>
     </LinkContainer>
-    
+
   </div>
 );
 

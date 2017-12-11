@@ -1,5 +1,4 @@
 export { default as AppNav } from './AppNav';
-export { default as AddPlayer } from './AddPlayer';
 export { default as GamesList } from './GamesList';
 export { default as GameStatistics } from './GameStatistics';
 export { default as LoginForm } from './LoginForm';
