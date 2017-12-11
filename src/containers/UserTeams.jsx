@@ -13,6 +13,7 @@ class UserTeams extends React.Component {
   };
 
   static propTypes = {
+    canEdit: PropTypes.bool.isRequired,
     loadTeams: PropTypes.func.isRequired,
     teams: PropTypes.arrayOf(PropTypes.shape({
       id: PropTypes.number.isRequired,
@@ -28,7 +29,7 @@ class UserTeams extends React.Component {
     return (
       <div>
         <h1 className="text-center">My Teams</h1>
-        <TeamList teams={this.props.teams} />
+        <TeamList canEdit={this.props.canEdit} teams={this.props.teams} />
       </div>
     );
   }
@@ -39,6 +40,7 @@ const mapStateToProps = state => {
   const user = getCurrentUser(state);
 
   return {
+    canEdit: !!user,
     teams: user ? getUserTeams(state, user) : [],
   }
 };

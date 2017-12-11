@@ -3,6 +3,7 @@ import * as actions from '../actions';
 
 export default (state = {}, action = {}) => {
   switch (action.type) {
+    case actions.TEAM_ADD_SUCCESS:
     case actions.TEAM_FETCH_SUCCESS:
       return {
         ...state,
