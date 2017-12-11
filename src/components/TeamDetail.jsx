@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import { Button, ButtonToolbar, Col, PageHeader, Tab, Tabs, Well } from 'react-bootstrap';
+import { Button, ButtonToolbar, Col, Glyphicon, PageHeader, Tab, Tabs, Well } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
 import { Route, Switch, withRouter } from 'react-router-dom';
 
@@ -27,15 +27,18 @@ const TeamDetail = ({ canEdit, match, team }) => (
           <Tabs defaultActiveKey={1} id="team-tabs">
             <Tab eventKey={1} title="Roster">
               <div>
+               <h2>Team Roster</h2>
                 <Col sm={6} md={6} lg={6}>
-                  <TeamPlayerList canEdit={canEdit} />
                   {canEdit && (
-                    <ButtonToolbar>
-                      <LinkContainer to={`${match.url}players/add/`}>
-                        <Button bsStyle="primary">Add Player</Button>
-                      </LinkContainer>
-                    </ButtonToolbar>
-                  )}
+                    <Well>
+                      <ButtonToolbar>
+                        <LinkContainer to={`${match.url}players/add/`}>
+                          <Button bsStyle="primary"><Glyphicon glyph="plus" /> Add Player</Button>
+                        </LinkContainer>
+                      </ButtonToolbar>
+                    </Well>
+                    )}
+                  <TeamPlayerList canEdit={canEdit} />
                 </Col>
                 <Col>
                   <div>
@@ -54,7 +57,7 @@ const TeamDetail = ({ canEdit, match, team }) => (
                     <Well>
                       <ButtonToolbar>
                         <LinkContainer to={`${match.url}games/add/`}>
-                          <Button bsStyle="primary">Track New Game</Button>
+                          <Button bsStyle="primary"><Glyphicon glyph="plus" /> Track New Game</Button>
                         </LinkContainer>
                       </ButtonToolbar>
                     </Well>
