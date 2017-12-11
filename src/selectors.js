@@ -11,6 +11,11 @@ export const getAuthToken = state => state.auth.token;
 export const getCurrentUser = state => state.users[state.auth.currentUser];
 
 
+export const getFormErrors = (state, formName) => (
+  state.form[formName] ? state.form[formName].errors : {}
+);
+
+
 export const getLoginErrors = state => state.auth.loginErrors;
 
 
@@ -25,6 +30,16 @@ export const getUserTeams = (state, user) => getAllTeams(state)
 
 
 export const isAuthenticated = state => state.auth.token.length !== 0;
+
+
+export const isFormComplete = (state, formName) => (
+  state.form[formName] && state.form[formName].complete
+);
+
+
+export const isFormPending = (state, formName) => (
+  state.form[formName] && state.form[formName].pending
+);
 
 
 export const isLoggingIn = state => state.auth.loginPending;

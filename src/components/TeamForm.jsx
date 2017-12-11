@@ -2,8 +2,8 @@ import React from 'react';
 import { PageHeader } from 'react-bootstrap';
 import { connect } from 'react-redux';
 
-import { login, loginReset } from '../actionCreators';
-import { getLoginErrors, isLoggingIn, isLoginComplete } from '../selectors';
+import { addTeam, resetAddTeamForm } from '../actionCreators';
+import { getFormErrors, isFormComplete, isFormPending } from '../selectors';
 import SchemaForm from './SchemaForm';
 
 
@@ -13,15 +13,28 @@ const TeamForm = props => (
     <SchemaForm
       {...props}
       fields={{
-        teamname: {
+        name: {
           label: 'Team Name',
           required: true,
         },
       }}
-      successURL="/"
+      successURL="/teams/"
     />
   </div>
 );
 
 
-export default TeamForm;
+const mapStateToProps = state => ({
+  errors: getFormErrors(state, 'addTeam'),
+  isComplete: isFormComplete(state, 'addTeam'),
+  isLoading: isFormPending(state, 'addTeam'),
+});
+
+
+const mapDispatchToProps = dispatch => ({
+  onSubmit: team => dispatch(addTeam(team)),
+  onUnmount: () => dispatch(resetAddTeamForm()),
+});
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(TeamForm);
