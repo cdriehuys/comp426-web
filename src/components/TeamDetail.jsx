@@ -5,11 +5,8 @@ import { LinkContainer } from 'react-router-bootstrap';
 import { Route, Switch, withRouter } from 'react-router-dom';
 
 import { TeamGameList, TeamPlayerList } from '../containers';
-import { GameForm, GameStatistics, GameTracker, PlayerForm, TeamStatistics } from '../components';
+import { GameForm, GameStatistics, GameTracker, PlayerForm, PlayerStatistics, TeamStatistics } from '../components';
 
-
-const game = {id: 1, name: 'SF Bridges', opposing_team_name: 'UNCW', points_for: 11, points_against: 5};
-const teamstats = {id: 1, name: 'SF Bridges', games_lost: 4, games_won: 5};
 
 const TeamDetail = ({ canEdit, match, team }) => (
   <div>
@@ -40,11 +37,17 @@ const TeamDetail = ({ canEdit, match, team }) => (
                     )}
                   <TeamPlayerList canEdit={canEdit} />
                 </Col>
-                <Col>
-                  <div>
-                    <h2 className="text-center">Player Stats</h2>
-                    <p className="text-center">Click on a player to view their stats.</p>
-                  </div>
+                <Col sm={6} md={6} lg={6}>
+                  <Switch>
+                    <Route path={`${match.path}players/:playerId/`} component={PlayerStatistics} />
+
+                    <Route render={() => (
+                      <div>
+                        <h2 className="text-center">Player Stats</h2>
+                        <p className="text-center">Click on a player to view their stats.</p>
+                      </div>
+                    )} />
+                  </Switch>
                 </Col>
               </div>
             </Tab>

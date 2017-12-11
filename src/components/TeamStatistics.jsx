@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-
 import { PieChart } from 'react-easy-chart';
+
 
 const TeamStatistics = ({ team }) => (
 
@@ -32,7 +32,7 @@ const TeamStatistics = ({ team }) => (
 );
 
 TeamStatistics.defaultProps = {
-  team: [],
+  team: {},
 };
 
 TeamStatistics.propTypes = {
