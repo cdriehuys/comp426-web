@@ -8,14 +8,11 @@ import teams from './teams';
 import users from './users';
 
 
-const appReducer = combineReducers({
+export default {
   auth,
   form,
   players,
   registration,
   teams,
   users,
-});
-
-
-export default appReducer;
+};
