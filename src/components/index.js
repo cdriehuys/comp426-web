@@ -1,6 +1,7 @@
 export { default as AppNav } from './AppNav';
 export { default as GamesList } from './GamesList';
 export { default as GameStatistics } from './GameStatistics';
+export { default as GameTracker } from './GameTracker';
 export { default as LoginForm } from './LoginForm';
 export { default as PlayerForm } from './PlayerForm';
 export { default as PlayerList } from './PlayerList';

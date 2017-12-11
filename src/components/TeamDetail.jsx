@@ -1,11 +1,11 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import { Button, Col, PageHeader, Tab, Tabs } from 'react-bootstrap';
+import { Button, ButtonToolbar, Col, PageHeader, Tab, Tabs, Well } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
 import { Route, Switch, withRouter } from 'react-router-dom';
 
 import { TeamPlayerList } from '../containers';
-import { GamesList, GameStatistics, PlayerForm } from '../components';
+import { GameStatistics, GameTracker, GamesList, PlayerForm } from '../components';
 
 
 const games = [
@@ -22,6 +22,8 @@ const TeamDetail = ({ canEdit, match, team }) => (
     <PageHeader>{team.name}</PageHeader>
 
     <Switch>
+      <Route path={`${match.path}games/:gameId/tracker/`} component={GameTracker} />
+
       <Route path={`${match.path}players/add/`} component={PlayerForm} />
 
       <Route
@@ -32,9 +34,11 @@ const TeamDetail = ({ canEdit, match, team }) => (
                 <Col sm={6} md={6} lg={6}>
                   <TeamPlayerList canEdit={canEdit} />
                   {canEdit && (
-                    <LinkContainer to={`${match.url}players/add/`}>
-                      <Button bsStyle="primary">Add Player</Button>
-                    </LinkContainer>
+                    <ButtonToolbar>
+                      <LinkContainer to={`${match.url}players/add/`}>
+                        <Button bsStyle="primary">Add Player</Button>
+                      </LinkContainer>
+                    </ButtonToolbar>
                   )}
                 </Col>
                 <Col>
@@ -50,6 +54,15 @@ const TeamDetail = ({ canEdit, match, team }) => (
               <div className="text-center">
                 <h2>Games Home</h2>
                 <Col sm={6} md={6} lg={6}>
+                  {canEdit && (
+                    <Well>
+                      <ButtonToolbar>
+                        <LinkContainer to={`${match.url}games/1/tracker/`}>
+                          <Button bsStyle="primary">Track New Game</Button>
+                        </LinkContainer>
+                      </ButtonToolbar>
+                    </Well>
+                  )}
                   <GamesList games={games}/>
                   {/* TODO: Insert ADD GAME BUTTON*/}
                 </Col>
