@@ -32,6 +32,6 @@ export const register = (username, password) => (dispatch) => {
 
   return APIClient.register(username, password)
     .then(data => dispatch(registerSuccess()))
-    .then(dispatch(login(username, password)))
-    .catch(error => dispatch(registerFail(error.response.data)));
+    .catch(error => dispatch(registerFail(error.response.data)))
+    .then(dispatch(login(username, password)));
 };
