@@ -1,9 +1,9 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import { PageHeader } from 'react-bootstrap';
+import { PageHeader, Tab, Tabs } from 'react-bootstrap';
 
 import { TeamPlayerList } from '../containers';
-import { AddPlayer, PlayerList } from '../components';
+import { AddPlayer } from '../components';
 
 
 const darksidePlayers = [
@@ -16,8 +16,20 @@ const darksidePlayers = [
 const TeamDetail = ({ team }) => (
   <div>
     <PageHeader>{team.name}</PageHeader>
-    <TeamPlayerList />
-    <AddPlayer />
+    <Tabs defaultActiveKey={1} id="team-tabs">
+      <Tab eventKey={1} title="Roster">
+        <TeamPlayerList />
+        <AddPlayer />
+      </Tab>
+      <Tab eventKey={2} title="Games">
+        <p>You have not played any games.  I'm not sure if you have or not actually but this is just hard coded.</p>
+      </Tab>
+      <Tab eventKey={3} title="Statistics">
+        <p>P1 has thrown 1000000000 turnovers.
+          Ultimate Frisbee games are played to 2 billion-1
+        </p>
+      </Tab>
+    </Tabs>
   </div>
 );
 

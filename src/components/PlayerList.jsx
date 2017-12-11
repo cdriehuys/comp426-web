@@ -4,6 +4,7 @@ import { Alert, ListGroup, ListGroupItem } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
 
 
+
 const PlayerList = ({ players }) => (
   <div>
     <h2>Roster</h2>
