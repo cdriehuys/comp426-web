@@ -1,4 +1,5 @@
 import auth from './auth';
+import games from './games';
 import form from './form';
 import players from './players';
 import registration from './registration';
@@ -9,6 +10,7 @@ import users from './users';
 export default {
   auth,
   form,
+  games,
   players,
   registration,
   teams,

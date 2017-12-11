@@ -2,6 +2,13 @@
  * Constants for action names.
  */
 
+
+export const GAME_ADD_FAIL = 'GAME_ADD_FAIL';
+export const GAME_ADD_START = 'GAME_ADD_START';
+export const GAME_ADD_SUCCESS = 'GAME_ADD_SUCCESS';
+export const GAME_FORM_RESET = 'GAME_FORM_RESET';
+
+
 export const PROFILE_FETCH_START = 'PROFILE_FETCH_START';
 export const PROFILE_FETCH_SUCCESS = 'PROFILE_FETCH_SUCCESS';
 
