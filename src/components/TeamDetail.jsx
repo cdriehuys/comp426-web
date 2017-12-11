@@ -53,7 +53,7 @@ const TeamDetail = ({ canEdit, match, team }) => (
                   <GamesList games={games}/>
                   {/* TODO: Insert ADD GAME BUTTON*/}
                 </Col>
-                <Col className="text-center">
+                <Col sm={6} md={6} lg={6} className="text-center">
 
                   <p>Click on a game to view general stats.</p>
 

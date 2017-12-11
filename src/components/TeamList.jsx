@@ -1,29 +1,31 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import { Alert, Button, ListGroup, ListGroupItem } from 'react-bootstrap';
+import { Alert, Button, Glyphicon, ListGroup, ListGroupItem } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
 
 
 const TeamList = ({ teams }) => (
   <div>
-  {teams.length > 0 ? (
+    <LinkContainer to="/teams/add/">
+      <Button bsStyle="primary"><Glyphicon glyph="plus" /> Add Team</Button>
+    </LinkContainer>
+    {teams.length > 0 ? (
       <ListGroup>
       {teams.map(team => (
         <LinkContainer key={team.id} to={`/teams/${team.id}/`}>
           <ListGroupItem header={team.name} />
         </LinkContainer>
       ))}
-    </ListGroup>
+      </ListGroup>
     ) : (
-    <Alert>
-      <h4>No Teams </h4>
-      <p>This will be a lot more interesting if you add a team!</p>
-    </Alert>
+      <Alert>
+        <h4>No Teams </h4>
+        <p>This will be a lot more interesting if you add a team!</p>
+      </Alert>
     )}
     <LinkContainer to="/teams/add/">
       <Button bsStyle="primary">Add Team</Button>
     </LinkContainer>
-
   </div>
 );
 
