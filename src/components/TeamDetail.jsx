@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import React from 'react';
+import { PageHeader } from 'react-bootstrap';
 
 import { AddPlayer, PlayerList } from '../components';
 
@@ -13,8 +14,7 @@ const darksidePlayers = [
 
 const TeamDetail = ({ team }) => (
   <div>
-    <h1>{team.name}</h1>
-    <h2>{team.level} - {team.school}</h2>
+    <PageHeader>{team.name}</PageHeader>
     <PlayerList players={darksidePlayers} />
     <AddPlayer />
   </div>

@@ -17,6 +17,7 @@ const UNAUTHENTICATED_LINKS = {
 const AppNav = ({ currentUser, onLogOut }) => {
   let links;
   if (currentUser !== null) {
+    
     links = [
       <LinkContainer key={1} to="/teams/"><NavItem>My Teams</NavItem></LinkContainer>,
       <NavDropdown key={2} eventKey={3} title={currentUser.username} id="basic-nav-dropdown">
