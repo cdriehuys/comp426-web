@@ -3,7 +3,7 @@ import React from 'react';
 import { MenuItem, Nav, NavDropdown, NavItem, Navbar } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import { LinkContainer } from 'react-router-bootstrap';
-import { NavLink, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { logout } from '../actionCreators';
 import { getCurrentUser } from '../selectors';
 
