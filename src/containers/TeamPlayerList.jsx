@@ -10,6 +10,7 @@ import { getTeamPlayers } from '../selectors';
 
 class TeamPlayerList extends React.Component {
   static propTypes = {
+    canEdit: PropTypes.bool.isRequired,
     match: PropTypes.shape({
       params: PropTypes.shape({
         id: PropTypes.string.isRequired,
@@ -29,13 +30,14 @@ class TeamPlayerList extends React.Component {
 
   render() {
     return (
-      <PlayerList players={this.props.players} />
+      <PlayerList canEdit={this.props.canEdit} players={this.props.players} />
     );
   }
 }
 
 
 const mapStateToProps = (state, ownProps) => ({
+  canEdit: ownProps.canEdit,
   players: getTeamPlayers(state, ownProps.match.params.id),
 });
 

@@ -4,15 +4,17 @@ import { connect } from 'react-redux';
 
 import { fetchTeam } from '../actionCreators';
 import { TeamDetail } from '../components';
-import { getTeam } from '../selectors';
+import { getCurrentUser, getTeam } from '../selectors';
 
 
 class TeamDetailByID extends React.Component {
   static defaultProps = {
+    canEdit: false,
     team: null,
   };
 
   static propTypes = {
+    canEdit: PropTypes.bool,
     loadTeam: PropTypes.func.isRequired,
     team: PropTypes.shape({
       id: PropTypes.number.isRequired,
@@ -27,7 +29,7 @@ class TeamDetailByID extends React.Component {
 
   render() {
     return this.props.team ? (
-      <TeamDetail team={this.props.team} />
+      <TeamDetail canEdit={this.props.canEdit} team={this.props.team} />
     ) : (
       <h3 className="text-center">Loading...</h3>
     );
@@ -35,9 +37,14 @@ class TeamDetailByID extends React.Component {
 }
 
 
-const mapStateToProps = (state, ownProps) => ({
-  team: getTeam(state, ownProps.match.params.id),
-});
+const mapStateToProps = (state, ownProps) => {
+  const team = getTeam(state, ownProps.match.params.id);
+  const user = getCurrentUser(state);
+
+  const canEdit = team && user && team.user === user.id;
+
+  return { canEdit, team };
+};
 
 
 const mapDispatchToProps = (dispatch, ownProps) => ({

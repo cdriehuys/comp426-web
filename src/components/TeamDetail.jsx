@@ -13,15 +13,15 @@ const games = [
 ];
 
 
-const TeamDetail = ({ team }) => (
+const TeamDetail = ({ canEdit, team }) => (
   <div>
     <PageHeader>{team.name}</PageHeader>
     <Tabs defaultActiveKey={1} id="team-tabs">
       <Tab eventKey={1} title="Roster">
         <div>
           <Col sm={6} md={6} lg={6}>
-            <TeamPlayerList />
-            <AddPlayer />
+            <TeamPlayerList canEdit={canEdit} />
+            {canEdit && <AddPlayer />}
           </Col>
           <Col className="text-center">
             <p>Click on a player to view their stats.</p>
@@ -47,7 +47,12 @@ const TeamDetail = ({ team }) => (
   </div>
 );
 
+TeamDetail.defaultProps = {
+  canEdit: false,
+};
+
 TeamDetail.propTypes = {
+  canEdit: PropTypes.bool,
   team: PropTypes.shape({
     level: PropTypes.string,
     name: PropTypes.string.isRequired,

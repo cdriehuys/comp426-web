@@ -12,7 +12,7 @@ const games = [
   {id: 3, name: "Triforce vs. Flyers"}
 ];
 
-const PlayerList = ({ players }) => (
+const PlayerList = ({ canEdit, players }) => (
   <div>
     <h2>Roster</h2>
     {players.length > 0 ? (
@@ -26,17 +26,23 @@ const PlayerList = ({ players }) => (
     ) : (
       <Alert>
         <h4>No Players</h4>
-        <p>This will be a lot more interesting if you add some players to your team.</p>
+        {canEdit ? (
+          <p>This will be a lot more interesting if you add some players to your team.</p>
+        ) : (
+          <p>Hopefully this team rosters some players or they're not gonna do very well...</p>
+        )}
       </Alert>
     )}
   </div>
 );
 
 PlayerList.defaultProps = {
+  canEdit: false,
   players: [],
 };
 
 PlayerList.propTypes = {
+  canEdit: PropTypes.bool,
   players: PropTypes.arrayOf(PropTypes.shape({
      id: PropTypes.number.isRequired,
      name: PropTypes.string.isRequired,
