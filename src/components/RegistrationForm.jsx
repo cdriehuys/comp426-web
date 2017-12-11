@@ -20,7 +20,7 @@ const RegistrationForm = props => (
         type: 'password',
       },
     }}
-    successURL="/"
+    successURL="/teams/"
   />
 );
 

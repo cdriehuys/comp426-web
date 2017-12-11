@@ -8,7 +8,7 @@ import SchemaForm from './SchemaForm';
 
 
 const LoginForm = props => {
-  const { from } = props.location.state || { from: { pathname: '/' } };
+  const { from } = props.location.state || { from: { pathname: '/teams/' } };
 
   return (
     <SchemaForm
