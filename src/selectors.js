@@ -16,6 +16,9 @@ export const getFormErrors = (state, formName) => (
 );
 
 
+export const getGame = (state, gameId) => state.games[gameId];
+
+
 export const getLoginErrors = state => state.auth.loginErrors;
 
 
@@ -28,8 +31,19 @@ export const getRegistrationErrors = state => state.registration.registerErrors;
 export const getTeam = (state, teamId) => state.teams[teamId];
 
 
+export const getTeamGames = (state, teamId) => {
+  const team = getTeam(state, teamId);
+
+  if (!(team && team.games)) {
+    return [];
+  }
+
+  return team.games.map(id => getGame(state, id));
+}
+
+
 export const getTeamPlayers = (state, teamId) => {
-  const team = state.teams[teamId];
+  const team = getTeam(state, teamId);
 
   if (!(team && team.players)) {
     return [];

@@ -1,11 +1,15 @@
 export { default as AppNav } from './AppNav';
-export { default as GamesList } from './GamesList';
+export { default as GameForm } from './GameForm';
 export { default as GameStatistics } from './GameStatistics';
+export { default as GameTracker } from './GameTracker';
+export { default as GamesList } from './GamesList';
 export { default as LoginForm } from './LoginForm';
 export { default as PlayerForm } from './PlayerForm';
 export { default as PlayerList } from './PlayerList';
+export { default as PlayerStatistics } from './PlayerStatistics';
 export { default as PrivateRoute } from './PrivateRoute';
 export { default as RegistrationForm } from './RegistrationForm';
 export { default as TeamDetail } from './TeamDetail';
 export { default as TeamForm } from './TeamForm';
 export { default as TeamList } from './TeamList';
+export { default as TeamStatistics } from './TeamStatistics';

@@ -12,12 +12,19 @@ class APIClient {
   static API_ROOT = 'https://api.ultimanager.com';
   static TEAM_MANAGMENT_ROOT = `${APIClient.API_ROOT}/team-management`;
 
+  static createGame = (token, teamId, game) => {
+    const url = `${APIClient.TEAM_MANAGMENT_ROOT}/teams/${teamId}/games/`;
+
+    return axios.post(url, game, { headers: getAuthHeaders(token) })
+      .then(response => response.data);
+  };
+
   static createPlayer = (token, teamId, player) => {
     const url = `${APIClient.TEAM_MANAGMENT_ROOT}/teams/${teamId}/players/`;
 
     return axios.post(url, player, { headers: getAuthHeaders(token) })
       .then(response => response.data);
-  }
+  };
 
   static createTeam = (token, team) => {
     const url = `${APIClient.TEAM_MANAGMENT_ROOT}/teams/`;
@@ -35,6 +42,12 @@ class APIClient {
 
   static getTeam = (teamId) => {
     const url = `${APIClient.TEAM_MANAGMENT_ROOT}/teams/${teamId}/`;
+
+    return axios.get(url).then(response => response.data);
+  };
+
+  static getTeamGames = (teamId) => {
+    const url = `${APIClient.TEAM_MANAGMENT_ROOT}/teams/${teamId}/games/`;
 
     return axios.get(url).then(response => response.data);
   };

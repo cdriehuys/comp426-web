@@ -3,6 +3,15 @@ import * as actions from '../actions';
 
 export default (state = {}, action = {}) => {
   switch (action.type) {
+    case actions.GAME_ADD_SUCCESS:
+      return {
+        ...state,
+        [action.payload.game.team]: {
+          ...state[action.payload.game.team],
+          games: [...state[action.payload.game.team].games, action.payload.game.id],
+        },
+      }
+
     case actions.PLAYER_ADD_SUCCESS:
       return {
         ...state,
@@ -22,9 +31,17 @@ export default (state = {}, action = {}) => {
         },
       };
 
-    case actions.TEAMS_FETCH_SUCCESS:
+    case actions.TEAM_GAMES_FETCH_SUCCESS:
       return {
         ...state,
+        [action.payload.teamId]: {
+          ...state[action.payload.teamId],
+          games: action.payload.games.map(game => game.id),
+        },
+      };
+
+    case actions.TEAMS_FETCH_SUCCESS:
+      return {
         ...action.payload.teams.reduce((acc, team) => ({
           ...acc,
           [team.id]: {

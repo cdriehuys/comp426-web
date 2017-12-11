@@ -47,6 +47,12 @@ const createFormReducer = (startAction, successAction, failAction, resetAction) 
 
 
 export default combineReducers({
+  addGame: createFormReducer(
+    actions.GAME_ADD_START,
+    actions.GAME_ADD_SUCCESS,
+    actions.GAME_ADD_FAIL,
+    actions.GAME_FORM_RESET),
+
   addPlayer: createFormReducer(
     actions.PLAYER_ADD_START,
     actions.PLAYER_ADD_SUCCESS,

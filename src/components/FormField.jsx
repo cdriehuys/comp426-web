@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import { ControlLabel, FormControl, FormGroup, HelpBlock } from 'react-bootstrap';
+import { ControlLabel, FormControl, FormGroup, HelpBlock, Radio } from 'react-bootstrap';
 
 
 const renderErrors = (errors) => {
@@ -16,18 +16,33 @@ const renderErrors = (errors) => {
 }
 
 
-const FormField = ({ errors, label, name, onChange, type, value }) => (
+const FormField = ({ errors, label, name, onChange, options, required, type, value }) => (
   <FormGroup
     controlId={name}
     validationState={errors.length > 0 ? 'error' : null}
   >
     <ControlLabel>{label}</ControlLabel>
-    <FormControl
-      name={name}
-      onChange={onChange}
-      type={type}
-      value={value}
+    {type === 'radio' ? (
+      Object.keys(options).map(key => (
+        <Radio
+          name={name}
+          onChange={onChange}
+          required={required}
+          value={key}
+        >
+          {options[key]}
+        </Radio>
+      ))
+    ) : (
+      <FormControl
+        name={name}
+        onChange={onChange}
+        required={required}
+        type={type}
+        value={value}
     />
+
+    )}
     {errors.length > 0 && (
       <HelpBlock>{renderErrors(errors)}</HelpBlock>
     )}
@@ -36,6 +51,8 @@ const FormField = ({ errors, label, name, onChange, type, value }) => (
 
 FormField.defaultProps = {
   errors: [],
+  options: {},
+  required: false,
   type: 'text',
 };
 
@@ -44,6 +61,8 @@ FormField.propTypes = {
   label: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
   onChange: PropTypes.func.isRequired,
+  options: PropTypes.objectOf(PropTypes.string),
+  required: PropTypes.bool,
   type: PropTypes.string,
   value: PropTypes.string.isRequired,
 };
