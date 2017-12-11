@@ -3,7 +3,7 @@ import React from 'react';
 import { Col, PageHeader, Tab, Tabs } from 'react-bootstrap';
 
 import { TeamPlayerList } from '../containers';
-import { GamesList, AddPlayer } from '../components';
+import { AddPlayer, GamesList, GameStatistics } from '../components';
 
 
 const games = [
@@ -11,6 +11,8 @@ const games = [
   {id: 2, name: "Darkside vs. Triforce"},
   {id: 3, name: "Triforce vs. Flyers"}
 ];
+
+const game = {id: 1, name: 'SF Bridges', opposing_team_name: 'LA Planes', points_for: 11, points_against: 5};
 
 
 const TeamDetail = ({ canEdit, team }) => (
@@ -40,14 +42,15 @@ const TeamDetail = ({ canEdit, team }) => (
             {/* TODO: Insert ADD GAME BUTTON*/}
           </Col>
           <Col className="text-center">
+
             <p>Click on a game to view general stats.</p>
+
+            <GameStatistics game={game} />
           </Col>
         </div>
       </Tab>
       <Tab eventKey={3} title="Statistics">
-        <p>P1 has thrown 1000000000 turnovers.
-          Ultimate Frisbee games are played to 2 billion-1
-        </p>
+        <p> Here are over all team statistics.  Pie chart with how many games were won or lost.</p>
       </Tab>
     </Tabs>
   </div>
