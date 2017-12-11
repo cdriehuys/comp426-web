@@ -3,7 +3,14 @@ import React from 'react';
 import { Alert, ListGroup, ListGroupItem } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
 
+import { GamesList } from '../components';
 
+
+const games = [
+  {id: 1, name: "Darkside vs. Flyers"},
+  {id: 2, name: "Darkside vs. Triforce"},
+  {id: 3, name: "Triforce vs. Flyers"}
+];
 
 const PlayerList = ({ players }) => (
   <div>

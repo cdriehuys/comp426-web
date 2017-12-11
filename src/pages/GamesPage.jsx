@@ -19,7 +19,6 @@ const GamesPage = () => (
         <div className="text-center">
           <h1>Games Home</h1>
           <GamesList games={games}/>
-          
 
         </div>
 

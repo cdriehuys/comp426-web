@@ -1,28 +1,42 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import { PageHeader, Tab, Tabs } from 'react-bootstrap';
+import { Col, PageHeader, Tab, Tabs } from 'react-bootstrap';
 
 import { TeamPlayerList } from '../containers';
-import { AddPlayer } from '../components';
+import { GamesList, AddPlayer } from '../components';
 
 
-const darksidePlayers = [
-  { id: 1, name: 'Elijah', team: 1 },
-  { id: 2, name: 'Chathan', team: 1 },
-  { id: 3, name: 'Suraj', team: 1 },
-  { id: 4, name: 'Sam', team: 1 },
+const games = [
+  {id: 1, name: "Darkside vs. Flyers"},
+  {id: 2, name: "Darkside vs. Triforce"},
+  {id: 3, name: "Triforce vs. Flyers"}
 ];
+
 
 const TeamDetail = ({ team }) => (
   <div>
     <PageHeader>{team.name}</PageHeader>
     <Tabs defaultActiveKey={1} id="team-tabs">
       <Tab eventKey={1} title="Roster">
-        <TeamPlayerList />
-        <AddPlayer />
+        <div>
+          <Col sm={6} md={6} lg={6}>
+            <TeamPlayerList />
+            <AddPlayer />
+          </Col>
+          <Col className="text-center">
+            <p>Click on a player to view their stats.</p>
+          </Col>
+        </div>
       </Tab>
+
       <Tab eventKey={2} title="Games">
-        <p>You have not played any games.  I'm not sure if you have or not actually but this is just hard coded.</p>
+        <div className="text-center">
+          <h2>Games Home</h2>
+          <Col sm={6} md={6} lg={6}>
+            <GamesList games={games}/>
+            {/* TODO: Insert ADD GAME BUTTON*/}
+          </Col>
+        </div>
       </Tab>
       <Tab eventKey={3} title="Statistics">
         <p>P1 has thrown 1000000000 turnovers.
