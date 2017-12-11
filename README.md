@@ -17,4 +17,7 @@ This project is licensed under the MIT License.
 
 ## Authors
 
-Chathan Driehuys (chathan@driehuys.com)
+* Chathan Driehuys (chathan@driehuys.com)
+* Elijah Long (elijah11@ad.unc.edu)
+* Sam Lee (jhwan@live.unc.edu)
+* Suraj Madiraju (madirajusuraj@gmail.com)

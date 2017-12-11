@@ -1,28 +1,33 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router';
 
 import { login, loginReset } from '../actionCreators';
 import { getLoginErrors, isLoggingIn, isLoginComplete } from '../selectors';
 import SchemaForm from './SchemaForm';
 
 
-const LoginForm = props => (
-  <SchemaForm
-    {...props}
-    fields={{
-      username: {
-        label: 'Username',
-        required: true,
-      },
-      password: {
-        label: 'Password',
-        required: true,
-        type: 'password',
-      },
-    }}
-    successURL="/"
-  />
-);
+const LoginForm = props => {
+  const { from } = props.location.state || { from: { pathname: '/teams/' } };
+
+  return (
+    <SchemaForm
+      {...props}
+      fields={{
+        username: {
+          label: 'Username',
+          required: true,
+        },
+        password: {
+          label: 'Password',
+          required: true,
+          type: 'password',
+        },
+      }}
+      successURL={from}
+    />
+  );
+}
 
 
 const mapStateToProps = state => ({
@@ -38,4 +43,4 @@ const mapDispatchToProps = dispatch => ({
 });
 
 
-export default connect(mapStateToProps, mapDispatchToProps)(LoginForm);
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(LoginForm));

@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import { Button, Col, Row } from 'react-bootstrap';
+import { Alert, Button, Col, Row } from 'react-bootstrap';
 import { Redirect } from 'react-router';
 
 import FormField from './FormField';
@@ -33,7 +33,12 @@ class SchemaForm extends React.Component {
     onUnmount: PropTypes.func,
     onSubmit: PropTypes.func.isRequired,
     submitText: PropTypes.string,
-    successURL: PropTypes.string.isRequired,
+    successURL: PropTypes.oneOfType([
+      PropTypes.string,
+      PropTypes.shape({
+        pathname: PropTypes.string.isRequired,
+      }),
+    ]),
   }
 
   constructor(props) {
@@ -122,9 +127,9 @@ class SchemaForm extends React.Component {
     }
 
     return (
-      <div className="alert alert-danger">
+      <Alert bsStyle="danger">
         {content}
-      </div>
+      </Alert>
     );
   }
 }
