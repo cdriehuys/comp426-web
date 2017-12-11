@@ -13,7 +13,6 @@ class UserTeams extends React.Component {
   };
 
   static propTypes = {
-    canEdit: PropTypes.bool.isRequired,
     loadTeams: PropTypes.func.isRequired,
     teams: PropTypes.arrayOf(PropTypes.shape({
       id: PropTypes.number.isRequired,
