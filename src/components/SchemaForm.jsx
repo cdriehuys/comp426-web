@@ -79,7 +79,6 @@ class SchemaForm extends React.Component {
     return (
       <Row>
         <Col sm={12} md={8} mdOffset={2} lg={6} lgOffset={3}>
-
           <form onSubmit={this.handleSubmit}>
             {this.renderFormErrors()}
             {Object.keys(this.props.fields).map(key => (
@@ -91,13 +90,10 @@ class SchemaForm extends React.Component {
                 onChange={this.handleChange}
                 required={this.props.fields[key].required || false}
                 type={this.props.fields[key].type || "text"}
-                
-                   
                 value={this.state[key]}
               />
             ))}
 
-            <div>
             <Button
               bsStyle="primary"
               disabled={this.props.isLoading}
@@ -105,7 +101,6 @@ class SchemaForm extends React.Component {
             >
               {this.props.submitText}
             </Button>
-            </div>
           </form>
         </Col>
       </Row>
