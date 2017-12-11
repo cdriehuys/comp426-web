@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import { ListGroup, ListGroupItem } from 'react-bootstrap';
+import { Button, ListGroup, ListGroupItem } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
 
 import AddTeam from './AddTeam';
@@ -8,7 +8,11 @@ import AddTeam from './AddTeam';
 
 const TeamList = ({ canEdit, teams }) => (
   <div>
-    {canEdit && <AddTeam />}
+    {canEdit && (
+      <LinkContainer to="/teams/add/">
+        <Button bsStyle="primary">Add Team</Button>
+      </LinkContainer>
+    )}
     <ListGroup>
       {teams.map(team => (
         <LinkContainer key={team.id} to={`/teams/${team.id}/`}>

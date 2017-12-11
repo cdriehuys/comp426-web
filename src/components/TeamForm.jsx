@@ -1,4 +1,5 @@
 import React from 'react';
+import { PageHeader } from 'react-bootstrap';
 import { connect } from 'react-redux';
 
 import { login, loginReset } from '../actionCreators';
@@ -7,22 +8,19 @@ import SchemaForm from './SchemaForm';
 
 
 const TeamForm = props => (
-  <SchemaForm
-    {...props}
-    fields={{
-      teamname: {
-        label: 'Team Name',
-        required: true,
-      },
-      image: {
-        label: 'Team Image',
-        type: 'file',
-        required: false,
-      },
-
-    }}
-    successURL="/"
-  />
+  <div>
+    <PageHeader className="text-center">Add Team</PageHeader>
+    <SchemaForm
+      {...props}
+      fields={{
+        teamname: {
+          label: 'Team Name',
+          required: true,
+        },
+      }}
+      successURL="/"
+    />
+  </div>
 );
 
 

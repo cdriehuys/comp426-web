@@ -4,13 +4,15 @@ import { Col, Row } from 'react-bootstrap';
 import { Route, Switch } from 'react-router-dom';
 
 import { AllTeams, TeamDetailByID, UserTeams } from '../containers';
-import { MyTeam, PrivateRoute, TeamList } from '../components';
+import { MyTeam, PrivateRoute, TeamForm, TeamList } from '../components';
 
 
 const TeamListPage = ({ match }) => (
   <Row>
     <Col sm={12} md={10} mdOffset={1} lg={8} lgOffset={2}>
       <Switch>
+        {/* Add new team */}
+        <PrivateRoute path={`${match.url}/add/`} component={TeamForm} />
         {/* Route to render all teams */}
         <Route path={`${match.url}/all/`} component={AllTeams} />
         {/* Route to render a specific team */}
