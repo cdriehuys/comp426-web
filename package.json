@@ -1,6 +1,6 @@
 {
   "name": "comp426-web",
-  "version": "0.1.1",
+  "version": "0.3.0",
   "private": true,
   "dependencies": {
     "axios": "^0.17.1",
